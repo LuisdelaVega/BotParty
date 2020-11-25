@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -250,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198346279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 3.776, z: -9}
+  m_LocalPosition: {x: 9, y: 4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 929053068}
@@ -3633,7 +3633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910000306}
   m_LocalRotation: {x: 3.2029016e-17, y: 0.035646178, z: -1.1424379e-18, w: 0.9993645}
-  m_LocalPosition: {x: 9, y: 3.776, z: -9}
+  m_LocalPosition: {x: 9, y: 4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3770,7 +3770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929053066}
-  m_LocalRotation: {x: -3.2029016e-17, y: 0.035646178, z: 1.1424379e-18, w: 0.9993645}
+  m_LocalRotation: {x: 3.2029016e-17, y: 0.035646178, z: -1.1424379e-18, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3970,7 +3970,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140993747}
-  m_LocalRotation: {x: 3.2029016e-17, y: 0.035646178, z: -1.1424379e-18, w: 0.9993645}
+  m_LocalRotation: {x: -3.2029016e-17, y: 0.035646178, z: 1.1424379e-18, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6256,7 +6256,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442548286}
-  m_LocalRotation: {x: -3.2029016e-17, y: 0.035646178, z: 1.1424379e-18, w: 0.9993645}
+  m_LocalRotation: {x: 3.2029016e-17, y: 0.035646178, z: -1.1424379e-18, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10620,10 +10620,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 984913191, guid: 742d04b7192daf94d8abd5f195064e47, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3636188958092040217, guid: 742d04b7192daf94d8abd5f195064e47, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3636188958092040217, guid: 742d04b7192daf94d8abd5f195064e47, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4124600422070895267, guid: 742d04b7192daf94d8abd5f195064e47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
