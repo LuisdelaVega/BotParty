@@ -9,7 +9,6 @@ public class MovementHandler : MonoBehaviour
     private readonly List<IMovementModifier> modifiers = new List<IMovementModifier>();
 
     private void Update() => Move();
-
     public void AddModifier(IMovementModifier modifier) => modifiers.Add(modifier);
     public void RemoveModifier(IMovementModifier modifier) => modifiers.Remove(modifier);
 

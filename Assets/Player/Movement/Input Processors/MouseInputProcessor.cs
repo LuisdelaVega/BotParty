@@ -3,9 +3,6 @@ using Cinemachine;
 
 public class MouseInputProcessor : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private MovementInputProcessor playerMovement = null;
-
     [Header("Settings")]
     [SerializeField] private float sensitivity = 0.15f;
     [SerializeField] private bool invertX = false;

@@ -7,18 +7,16 @@ public class Gravity : MonoBehaviour, IMovementModifier
     [SerializeField] protected MovementHandler movementHandler = null;
 
     [Header("Settings")]
-    // This "makes the gravity really high" when we are on the ground so that the character goes down ramps smoothly
+    // This makes the "gravity really strong" when the character is on the ground so that the it goes down ramps smoothly
     [SerializeField] private float groundedPullMagnitude = 15f;
 
     private readonly float gravityMagnitude = Physics.gravity.y;
-
-    private bool wasGroundedLastFrame;
+    private bool wasGroundedLastFrame = true;
 
     public Vector3 Value { get; private set; }
 
     private void OnEnable() => movementHandler.AddModifier(this);
     private void OnDisable() => movementHandler.RemoveModifier(this);
-
     private void Update() => ProcessGravity();
 
     private void ProcessGravity()

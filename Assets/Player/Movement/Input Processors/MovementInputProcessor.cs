@@ -5,25 +5,33 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
     [Header("References")]
     [SerializeField] private CharacterController controller = null;
     [SerializeField] private MovementHandler movementHandler = null;
-    [SerializeField] private Animator animator = null;
+    [SerializeField] private CharacterVisuals visuals = null;
 
     [Header("Settings")]
-    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float movementSpeed = 3f;
     [SerializeField] private float acceleration = 100f;
     [SerializeField, Tooltip("Higher value = Slower turn rate")] private float smoothTurnTime = 0.1f;
 
     private float currentSpeed = 0f;
     private Vector3 previousVelocity = Vector3.zero;
     private Vector2 previousInputDirection = Vector2.zero;
-    private float smoothTurnVelocity;
+    private float smoothTurnVelocity; // Used as a ref
 
+    private Animator animator = null;
     private Transform m_transform = null;
     private Transform mainCameraTransform = null;
-    private Controls controls;
+    private Controls controls = null;
 
     public Vector3 Value { get; private set; }
 
-    private void Awake() => controls = new Controls();
+    private void Awake()
+    {
+        controls = new Controls();
+        m_transform = transform;
+        mainCameraTransform = Camera.main.transform;
+
+        animator = visuals.InstantiateVisuals(m_transform);
+    }
 
     private void OnEnable()
     {
@@ -35,12 +43,6 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
     {
         controls.Disable();
         movementHandler.RemoveModifier(this);
-    }
-
-    private void Start()
-    {
-        m_transform = transform;
-        mainCameraTransform = Camera.main.transform;
     }
 
     private void Update() => Move();
