@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
 {
@@ -15,18 +13,17 @@ public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
     private float currentSpeed = 0f;
     public float CurrentSpeed { get => currentSpeed; protected set => currentSpeed = value; }
     protected Vector3 previousVelocity = Vector3.zero;
-    protected Vector2 previousDirection = Vector2.zero;
+    protected Vector3 previousDirection = Vector3.zero;
     protected float smoothTurnVelocity; // Used as a ref
 
     protected Transform m_transform = null;
-    protected Transform mainCameraTransform = null;
 
     public Vector3 Value { get; protected set; }
 
     private void Awake()
     {
         m_transform = transform;
-        OnAwakeHandler();
+        AwakeHandler();
     }
 
     private void OnEnable()
@@ -49,10 +46,11 @@ public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
         m_transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 
+    protected void SetMovementDirection(Vector3 direction) => previousDirection = direction;
+
     /* Abstract Methods*/
-    protected abstract void OnAwakeHandler();
+    protected abstract void AwakeHandler();
     protected abstract void OnEnableHandler();
     protected abstract void OnDisableHandler();
     protected abstract void Move();
-    protected abstract void SetMovementDirection(Vector2 direction);// => previousDirection = direction;
 }

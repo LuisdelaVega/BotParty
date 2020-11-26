@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Game/Player/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Characters/Player Controls/Controls.inputactions'
 
 using System;
 using System.Collections;
@@ -38,6 +38,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f430ac3b-d347-4383-98bd-ed17484d5f44"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cruise"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c66e12f8-1092-4c60-94e7-81faf1be53c1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -120,190 +128,15 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Car"",
-            ""id"": ""b02c174d-47d1-4dfc-8c86-92fb445f62bc"",
-            ""actions"": [
-                {
-                    ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""b8cfb66c-a661-457c-bf93-4836f4f6c94c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Break"",
-                    ""type"": ""Button"",
-                    ""id"": ""d68679cc-fe40-490f-8cab-7ac19b05a288"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Power Slide"",
-                    ""type"": ""Button"",
-                    ""id"": ""c97b4fb1-51a1-42e1-9d83-3154797dd974"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""e9b72b12-e3db-4576-8060-ce4bcfcc75ee"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""cedcf868-c3c3-4f87-805a-30f4d09f46dc"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""87b30da8-d362-44e0-8ff3-c9237ddac684"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""0831837a-7fcb-4b34-8d5a-bd6d9a3bb3ec"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""2e36d04d-ec48-43a3-afb7-fbbfe64fe106"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""725e7402-e0e5-4fd0-b265-997320de37fc"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""5d5ed9cd-21a0-4cb5-aa2e-dc8eb8db42d0"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""ab06cb20-db4c-4c54-9009-bda00d5e88c1"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""07937100-041f-4f02-bab5-fa010517bece"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""018b5c56-5b3d-4024-896f-6ae695465448"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0798d5b7-2d4b-4977-9bf3-51b272efb6cd"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""b5c6451e-1294-4f99-b533-c11555f5c5ae"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Break"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""483fb487-82bc-42eb-80ef-54b39e3787a9"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Break"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a7d6bfcf-a324-4898-8772-57b1e4cbdb09"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Power Slide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f92b3919-a7cd-4d75-a032-f45f98e981fa"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Power Slide"",
+                    ""action"": ""Cruise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -317,11 +150,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        // Car
-        m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
-        m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
-        m_Car_Break = m_Car.FindAction("Break", throwIfNotFound: true);
-        m_Car_PowerSlide = m_Car.FindAction("Power Slide", throwIfNotFound: true);
+        m_Player_Cruise = m_Player.FindAction("Cruise", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -374,6 +203,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Cruise;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -381,6 +211,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Cruise => m_Wrapper.m_Player_Cruise;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +230,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Cruise.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCruise;
+                @Cruise.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCruise;
+                @Cruise.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCruise;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -412,69 +246,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Cruise.started += instance.OnCruise;
+                @Cruise.performed += instance.OnCruise;
+                @Cruise.canceled += instance.OnCruise;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // Car
-    private readonly InputActionMap m_Car;
-    private ICarActions m_CarActionsCallbackInterface;
-    private readonly InputAction m_Car_Movement;
-    private readonly InputAction m_Car_Break;
-    private readonly InputAction m_Car_PowerSlide;
-    public struct CarActions
-    {
-        private @Controls m_Wrapper;
-        public CarActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Car_Movement;
-        public InputAction @Break => m_Wrapper.m_Car_Break;
-        public InputAction @PowerSlide => m_Wrapper.m_Car_PowerSlide;
-        public InputActionMap Get() { return m_Wrapper.m_Car; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CarActions set) { return set.Get(); }
-        public void SetCallbacks(ICarActions instance)
-        {
-            if (m_Wrapper.m_CarActionsCallbackInterface != null)
-            {
-                @Movement.started -= m_Wrapper.m_CarActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnMovement;
-                @Break.started -= m_Wrapper.m_CarActionsCallbackInterface.OnBreak;
-                @Break.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnBreak;
-                @Break.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnBreak;
-                @PowerSlide.started -= m_Wrapper.m_CarActionsCallbackInterface.OnPowerSlide;
-                @PowerSlide.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnPowerSlide;
-                @PowerSlide.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnPowerSlide;
-            }
-            m_Wrapper.m_CarActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
-                @Break.started += instance.OnBreak;
-                @Break.performed += instance.OnBreak;
-                @Break.canceled += instance.OnBreak;
-                @PowerSlide.started += instance.OnPowerSlide;
-                @PowerSlide.performed += instance.OnPowerSlide;
-                @PowerSlide.canceled += instance.OnPowerSlide;
-            }
-        }
-    }
-    public CarActions @Car => new CarActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-    }
-    public interface ICarActions
-    {
-        void OnMovement(InputAction.CallbackContext context);
-        void OnBreak(InputAction.CallbackContext context);
-        void OnPowerSlide(InputAction.CallbackContext context);
+        void OnCruise(InputAction.CallbackContext context);
     }
 }

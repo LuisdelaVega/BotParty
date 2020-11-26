@@ -1,53 +1,34 @@
 ﻿using UnityEngine;
 
-public class MovementInputProcessor : MonoBehaviour, IMovementModifier
+public class MovementInputProcessor : CharacterMovement
 {
-    [Header("References")]
+    [Header("Player Specific Refereces")]
     [SerializeField] private CharacterController controller = null;
-    [SerializeField] private MovementHandler movementHandler = null;
 
-    [Header("Settings")]
-    [SerializeField] private float movementSpeed = 3f;
-    [SerializeField] private float acceleration = 100f;
-    [SerializeField, Tooltip("Higher value = Slower turn rate")] private float smoothTurnTime = 0.1f;
-
-    private float currentSpeed = 0f;
-    public float CurrentSpeed { get => currentSpeed; private set => currentSpeed = value; }
-    private Vector3 previousVelocity = Vector3.zero;
-    private Vector2 previousInputDirection = Vector2.zero;
-    private float smoothTurnVelocity; // Used as a ref
-
-    private Transform m_transform = null;
     private Transform mainCameraTransform = null;
     private Controls controls = null;
 
-    public Vector3 Value { get; private set; }
+    private bool isCruising = false;
 
-    private void Awake()
+    protected override void AwakeHandler()
     {
         controls = new Controls();
-        m_transform = transform;
         mainCameraTransform = Camera.main.transform;
     }
 
-    private void OnEnable()
+    protected override void OnEnableHandler()
     {
         controls.Enable();
-        controls.Player.Movement.performed += ctx => SetMovementInput(ctx.ReadValue<Vector2>());
-        movementHandler.AddModifier(this);
+        controls.Player.Movement.performed += ctx => SetMovementDirection(ctx.ReadValue<Vector2>());
+        controls.Player.Cruise.performed += ctx => isCruising = ctx.ReadValue<float>() > 0;
     }
-    private void OnDisable()
-    {
-        controls.Disable();
-        movementHandler.RemoveModifier(this);
-    }
+    protected override void OnDisableHandler() => controls.Disable();
 
-    private void Update() => Move();
-    public void SetMovementInput(Vector2 inputDirection) => previousInputDirection = inputDirection;
-
-    private void Move()
+    protected override void Move()
     {
-        float targetSpeed = movementSpeed * previousInputDirection.magnitude;
+        if (isCruising) return;
+
+        float targetSpeed = movementSpeed * previousDirection.magnitude;
 
         CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, acceleration * Time.deltaTime);
 
@@ -63,7 +44,7 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
         Vector3 movementDirection;
 
         if (targetSpeed != 0f)
-            movementDirection = forward * previousInputDirection.y + right * previousInputDirection.x;
+            movementDirection = forward * previousDirection.y + right * previousDirection.x;
         else
             movementDirection = previousVelocity.normalized;
 
@@ -73,12 +54,5 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
 
         if (CurrentSpeed > 0)
             Rotate();
-    }
-
-    private void Rotate()
-    {
-        float targetAngle = Mathf.Atan2(Value.x, Value.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(m_transform.eulerAngles.y, targetAngle, ref smoothTurnVelocity, smoothTurnTime);
-        m_transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 }

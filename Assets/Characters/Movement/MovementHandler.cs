@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovementHandler : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private CharacterController controller = null;
+    [SerializeField] private NavMeshAgent navMeshAgent = null;
 
     private readonly List<IMovementModifier> modifiers = new List<IMovementModifier>();
 
@@ -19,6 +21,9 @@ public class MovementHandler : MonoBehaviour
         foreach(IMovementModifier modifier in modifiers)
             movement += modifier.Value;
 
-        controller.Move(movement * Time.deltaTime);
+        if (controller != null)
+            controller.Move(movement * Time.deltaTime);
+        else if (navMeshAgent != null)
+            navMeshAgent.Move(movement * Time.deltaTime);
     }
 }
