@@ -5,7 +5,6 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
     [Header("References")]
     [SerializeField] private CharacterController controller = null;
     [SerializeField] private MovementHandler movementHandler = null;
-    [SerializeField] private CharacterVisuals visuals = null;
 
     [Header("Settings")]
     [SerializeField] private float movementSpeed = 3f;
@@ -13,11 +12,11 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
     [SerializeField, Tooltip("Higher value = Slower turn rate")] private float smoothTurnTime = 0.1f;
 
     private float currentSpeed = 0f;
+    public float CurrentSpeed { get => currentSpeed; private set => currentSpeed = value; }
     private Vector3 previousVelocity = Vector3.zero;
     private Vector2 previousInputDirection = Vector2.zero;
     private float smoothTurnVelocity; // Used as a ref
 
-    private Animator animator = null;
     private Transform m_transform = null;
     private Transform mainCameraTransform = null;
     private Controls controls = null;
@@ -29,8 +28,6 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
         controls = new Controls();
         m_transform = transform;
         mainCameraTransform = Camera.main.transform;
-
-        animator = visuals.InstantiateVisuals(m_transform);
     }
 
     private void OnEnable()
@@ -46,14 +43,13 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
     }
 
     private void Update() => Move();
-
     public void SetMovementInput(Vector2 inputDirection) => previousInputDirection = inputDirection;
 
     private void Move()
     {
         float targetSpeed = movementSpeed * previousInputDirection.magnitude;
 
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.deltaTime);
+        CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, acceleration * Time.deltaTime);
 
         Vector3 forward = mainCameraTransform.forward;
         Vector3 right = mainCameraTransform.right;
@@ -71,14 +67,11 @@ public class MovementInputProcessor : MonoBehaviour, IMovementModifier
         else
             movementDirection = previousVelocity.normalized;
 
-        Value = movementDirection * currentSpeed;
+        Value = movementDirection * CurrentSpeed;
         previousVelocity = new Vector3(controller.velocity.x, 0f, controller.velocity.z);
-        currentSpeed = previousVelocity.magnitude;
+        CurrentSpeed = previousVelocity.magnitude;
 
-        bool isWalking = currentSpeed > 0;
-        animator.SetBool("isWalking", isWalking);
-
-        if (isWalking)
+        if (CurrentSpeed > 0)
             Rotate();
     }
 
