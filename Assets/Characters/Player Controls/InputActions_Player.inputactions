@@ -1,8 +1,8 @@
 {
-    "name": "Controls",
+    "name": "InputActions_Player",
     "maps": [
         {
-            "name": "Player",
+            "name": "Player Controls",
             "id": "85c91f78-866c-465e-b569-daefa0cf4d7a",
             "actions": [
                 {
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Aim",
+                    "name": "Look",
                     "type": "PassThrough",
                     "id": "649a6c9a-3af0-4093-a206-f45e0e34073c",
                     "expectedControlType": "Vector2",
@@ -27,7 +27,7 @@
                     "id": "f430ac3b-d347-4383-98bd-ed17484d5f44",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "Cruise",
@@ -96,12 +96,34 @@
                 },
                 {
                     "name": "",
+                    "id": "f595b4ac-d9ef-4185-8875-3011fcfbbf95",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "64e72d18-6757-44b1-8c21-7077be4c400e",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb5e7a7f-3e01-47b3-bcf1-3fa4853e5c22",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -118,8 +140,30 @@
                 },
                 {
                     "name": "",
+                    "id": "2aa1fb71-c89a-4eb5-84a2-7b04e5bb223f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b5c6451e-1294-4f99-b533-c11555f5c5ae",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cruise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfeff286-0298-4b32-a388-ad6f5d11bff9",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

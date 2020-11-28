@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovementInputProcessor : CharacterMovement
 {
@@ -6,23 +7,11 @@ public class MovementInputProcessor : CharacterMovement
     [SerializeField] private CharacterController controller = null;
 
     private Transform mainCameraTransform = null;
-    private Controls controls = null;
-
     private bool isCruising = false;
 
-    protected override void AwakeHandler()
-    {
-        controls = new Controls();
-        mainCameraTransform = Camera.main.transform;
-    }
-
-    protected override void OnEnableHandler()
-    {
-        controls.Enable();
-        controls.Player.Movement.performed += ctx => SetMovementDirection(ctx.ReadValue<Vector2>());
-        controls.Player.Cruise.performed += ctx => isCruising = ctx.ReadValue<float>() > 0;
-    }
-    protected override void OnDisableHandler() => controls.Disable();
+    protected override void AwakeHandler() => mainCameraTransform = Camera.main.transform;
+    public void OnMovement(InputAction.CallbackContext value) => SetMovementDirection(value.ReadValue<Vector2>());
+    public void OnCruise(InputAction.CallbackContext value) => isCruising = value.ReadValue<float>() > 0;
 
     protected override void Move()
     {

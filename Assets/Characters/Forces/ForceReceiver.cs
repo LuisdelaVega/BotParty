@@ -4,7 +4,7 @@ public class ForceReceiver : MonoBehaviour, IMovementModifier
 {
     [Header("References")]
     [SerializeField] protected CharacterController controller = null;
-    [SerializeField] protected MovementHandler movementHandler = null;
+    [SerializeField] protected MovementManager movementManager = null;
 
     [Header("Settings")]
     [SerializeField] private float mass = 1f;

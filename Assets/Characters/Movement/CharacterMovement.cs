@@ -3,7 +3,7 @@
 public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
 {
     [Header("References")]
-    [SerializeField] private MovementHandler movementHandler = null;
+    [SerializeField] private MovementManager movementManager = null;
 
     [Header("Settings")]
     [SerializeField] protected float movementSpeed = 3f;
@@ -26,16 +26,8 @@ public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
         AwakeHandler();
     }
 
-    private void OnEnable()
-    {
-        movementHandler.AddModifier(this);
-        OnEnableHandler();
-    }
-    private void OnDisable()
-    {
-        movementHandler.RemoveModifier(this);
-        OnDisableHandler();
-    }
+    private void OnEnable() => movementManager.AddModifier(this);
+    private void OnDisable() => movementManager.RemoveModifier(this);
 
     private void Update() => Move();
 
@@ -50,7 +42,5 @@ public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
 
     /* Abstract Methods*/
     protected abstract void AwakeHandler();
-    protected abstract void OnEnableHandler();
-    protected abstract void OnDisableHandler();
     protected abstract void Move();
 }

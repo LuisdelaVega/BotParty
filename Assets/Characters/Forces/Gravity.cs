@@ -4,7 +4,7 @@ public class Gravity : MonoBehaviour, IMovementModifier
 {
     [Header("References")]
     [SerializeField] private CharacterController controller = null;
-    [SerializeField] protected MovementHandler movementHandler = null;
+    [SerializeField] protected MovementManager movementManager = null;
 
     [Header("Settings")]
     // This makes the "gravity really strong" when the character is on the ground so that the it goes down ramps smoothly
@@ -15,8 +15,8 @@ public class Gravity : MonoBehaviour, IMovementModifier
 
     public Vector3 Value { get; private set; }
 
-    private void OnEnable() => movementHandler.AddModifier(this);
-    private void OnDisable() => movementHandler.RemoveModifier(this);
+    private void OnEnable() => movementManager.AddModifier(this);
+    private void OnDisable() => movementManager.RemoveModifier(this);
     private void Update() => ProcessGravity();
 
     private void ProcessGravity()
