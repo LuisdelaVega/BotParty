@@ -19,7 +19,7 @@ public class MovementInputProcessor : CharacterMovement
 
         float targetSpeed = movementSpeed * previousDirection.magnitude;
 
-        CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, targetSpeed, acceleration * Time.deltaTime);
+        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.deltaTime);
 
         Vector3 forward = mainCameraTransform.forward;
         Vector3 right = mainCameraTransform.right;
@@ -37,11 +37,11 @@ public class MovementInputProcessor : CharacterMovement
         else
             movementDirection = previousVelocity.normalized;
 
-        Value = movementDirection * CurrentSpeed;
+        Value = movementDirection * currentSpeed;
         previousVelocity = new Vector3(controller.velocity.x, 0f, controller.velocity.z);
-        CurrentSpeed = previousVelocity.magnitude;
+        currentSpeed = previousVelocity.magnitude;
 
-        if (CurrentSpeed > 0)
+        if (currentSpeed > 0)
             Rotate();
     }
 }

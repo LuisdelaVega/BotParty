@@ -6,25 +6,30 @@ public class BotAgent : MonoBehaviour
     [Header("Bot Specific References")]
     [SerializeField] private Transform destination = null;
     [SerializeField] private NavMeshAgent navMeshAgent = null;
-    [SerializeField] private Rigidbody m_rigidbody = null;
+    [SerializeField] private NavMeshObstacle navMeshObstacle = null;
 
-
-    private void Awake()
-    {
-        navMeshAgent.SetDestination(destination.position);
-    }
+    private void Awake() => navMeshAgent.SetDestination(destination.position);
 
     private void Update()
     {
+        if (destination == null) return;
+
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-        {
             navMeshAgent.isStopped = true;
-            m_rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        }
         else
-        {
             navMeshAgent.isStopped = false;
-            m_rigidbody.constraints = RigidbodyConstraints.None;
-        }
+    }
+
+    public void DestinationReached()
+    {
+        destination = null;
+        if (navMeshAgent.enabled)
+            navMeshAgent.isStopped = true;
+    }
+
+    public void ShouldNavMeshAgentBeEnabled(bool enabled)
+    {
+        navMeshAgent.enabled = enabled;
+        navMeshObstacle.enabled = !enabled;
     }
 }

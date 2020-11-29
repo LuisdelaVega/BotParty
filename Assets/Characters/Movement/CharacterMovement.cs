@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(MovementManager))]
 public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
 {
     [Header("References")]
@@ -10,8 +11,7 @@ public abstract class CharacterMovement : MonoBehaviour, IMovementModifier
     [SerializeField] protected float acceleration = 100f;
     [SerializeField, Tooltip("Higher value = Slower turn rate")] protected float smoothTurnTime = 0.1f;
 
-    private float currentSpeed = 0f;
-    public float CurrentSpeed { get => currentSpeed; protected set => currentSpeed = value; }
+    protected float currentSpeed = 0f;
     protected Vector3 previousVelocity = Vector3.zero;
     protected Vector3 previousDirection = Vector3.zero;
     protected float smoothTurnVelocity; // Used as a ref

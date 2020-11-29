@@ -40,12 +40,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4124600422070895267}
   - component: {fileID: 2155406944744400632}
+  - component: {fileID: 6826750586411242529}
   - component: {fileID: 7773762608492335287}
   - component: {fileID: 8930744760916062069}
   - component: {fileID: 8582041645966640194}
-  - component: {fileID: 7694712167078182722}
   - component: {fileID: 5973029022859120236}
   - component: {fileID: 2080401276}
+  - component: {fileID: 5437424083316311528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Character
@@ -87,6 +88,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!208 &6826750586411242529
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636188958092040217}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.875, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &7773762608492335287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bc38c41d3664a459a7f3a93dd5b91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInputProcessor: {fileID: 8582041645966640194}
+  characterMovement: {fileID: 8582041645966640194}
   navMeshAgent: {fileID: 0}
   visuals: {fileID: 0}
 --- !u!114 &8930744760916062069
@@ -132,23 +149,6 @@ MonoBehaviour:
   acceleration: 100
   smoothTurnTime: 0.1
   controller: {fileID: 2155406944744400632}
---- !u!114 &7694712167078182722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3636188958092040217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76bc0b137ec4fc4390c7fd2dfc2cf04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 2155406944744400632}
-  movementManager: {fileID: 8930744760916062069}
-  mass: 1
-  drag: 5
-  jumpSpeed: 10
 --- !u!114 &5973029022859120236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,22 +211,6 @@ MonoBehaviour:
     m_ActionName: Player Controls/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7694712167078182722}
-        m_TargetAssemblyTypeName: JumpInputProcessor, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f430ac3b-d347-4383-98bd-ed17484d5f44
-    m_ActionName: Player Controls/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 8582041645966640194}
         m_TargetAssemblyTypeName: MovementInputProcessor, Assembly-CSharp
         m_MethodName: OnCruise
@@ -241,11 +225,57 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c66e12f8-1092-4c60-94e7-81faf1be53c1
     m_ActionName: Player Controls/Cruise[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5437424083316311528}
+        m_TargetAssemblyTypeName: GesturesInputProcessor, Assembly-CSharp
+        m_MethodName: OnClap
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec677e52-7855-4d88-bbec-d5fe628fb867
+    m_ActionName: Player Controls/Clap[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5437424083316311528}
+        m_TargetAssemblyTypeName: GesturesInputProcessor, Assembly-CSharp
+        m_MethodName: OnAnnoyedHeadShake
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fcff6fdf-5936-4e40-822b-cf6b0e5b79df
+    m_ActionName: Player Controls/Defeat[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: Player Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5437424083316311528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636188958092040217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4016d6d9392328745a3adfde68844323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMovement: {fileID: 8582041645966640194}
+  visualsManager: {fileID: 7773762608492335287}
 --- !u!1001 &1159564608883306481
 PrefabInstance:
   m_ObjectHideFlags: 0

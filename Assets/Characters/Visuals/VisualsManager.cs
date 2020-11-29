@@ -4,20 +4,20 @@ using UnityEngine.AI;
 public class VisualsManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private MovementInputProcessor movementInputProcessor = null;
+    [SerializeField] private CharacterMovement characterMovement = null;
     [SerializeField] private NavMeshAgent navMeshAgent = null;
     [SerializeField] private CharacterVisuals visuals = null;
 
-    private Animator animator = null;
+    public Animator animator { get; private set; }
     private bool isWalking = false;
 
     private void Awake() => animator = visuals.InstantiateVisuals(transform);
     private void Update()
     {
-        if (movementInputProcessor != null)
-            isWalking = movementInputProcessor.CurrentSpeed > 0;
+        if (characterMovement != null)
+            isWalking = characterMovement.Value.magnitude > 0;
         else if (navMeshAgent != null)
-            isWalking = !navMeshAgent.isStopped;
+            isWalking = navMeshAgent.enabled && !navMeshAgent.isStopped;
 
         animator.SetBool("isWalking", isWalking);
     }
